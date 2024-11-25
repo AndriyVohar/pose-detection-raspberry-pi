@@ -37,11 +37,31 @@ Install required Python packages:
 pip install -r requirements.txt
 ```
 
-### 4. Run the project
-Provide instructions to run project:  
-```bash
-python main.py
-```
+## Running the Project
+
+To run the pose detection project, follow these steps:
+
+1. **Run the program**:
+
+   You need to specify which pose detection method you want to use by passing the `-m` argument. For example:
+
+   - To run with **MediaPipe** pose detection:
+     ```bash
+     python3 main.py -m mediapipe
+     ```
+
+   - To run with **YOLO** pose detection (if implemented):
+     ```bash
+     python3 main.py -m yolo
+     ```
+
+2. **Interact with the program**:
+
+   - The application will open a webcam feed and begin performing pose detection using the selected method.
+   - Press `q` to quit the application.
+
+That's it! You can switch between different pose detection models by changing the `-m` argument when running the program.
+
 
 ## Contributing
 This project does not accept contributions.
