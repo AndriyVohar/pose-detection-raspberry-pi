@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import time
 
 class MediaPipePoseDetector:
     def __init__(self) -> None:
@@ -7,7 +8,13 @@ class MediaPipePoseDetector:
         Initialize the MediaPipe Pose detector.
         """
         self.mp_pose = mp.solutions.pose
-        self.pose = self.mp_pose.Pose()  # Pose detector
+        self.pose = self.mp_pose.Pose(
+            static_image_mode=False,  # Use dynamic mode for videos
+            model_complexity=0,  # Use a simpler model
+            enable_segmentation=False,  # Disable segmentation if not needed
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5
+        )  # Pose detector
         self.mp_drawing = mp.solutions.drawing_utils  # For drawing landmarks
 
     def process_frame(self, frame: cv2.Mat):
@@ -27,9 +34,7 @@ class MediaPipePoseDetector:
         :param results: The pose detection results.
         """
         if results.pose_landmarks:
-            self.mp_drawing.draw_landmarks(
-                frame, results.pose_landmarks, self.mp_pose.POSE_CONNECTIONS
-            )
+            self.mp_drawing.draw_landmarks(frame, results.pose_landmarks, self.mp_pose.POSE_CONNECTIONS, None)
 
     def run(self) -> None:
         """
@@ -43,12 +48,22 @@ class MediaPipePoseDetector:
 
         print("Press 'q' to quit.")
 
+        prev_time = 0
+        target_fps = 30  # Limit to 30 FPS
+        frame_interval = 1.0 / target_fps
+
         while cap.isOpened():
             ret, frame = cap.read()
 
             if not ret:
                 print("Failed to read a frame.")
                 break
+
+            # Limit frame rate
+            current_time = time.time()
+            if current_time - prev_time < frame_interval:
+                continue
+            prev_time = current_time
 
             # Process the frame for pose detection
             results = self.process_frame(frame)
