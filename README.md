@@ -47,12 +47,22 @@ To run the pose detection project, follow these steps:
 
    - To run with **MediaPipe** pose detection:
      ```bash
-     python3 main.py -m mediapipe
+     python3 src/main.py -m mediapipe
      ```
-
+     
    - To run with **YOLO** pose detection (if implemented):
      ```bash
-     python3 main.py -m yolo
+     python3 src/main.py -m yolo
+     ```
+     
+   - To run with **TensorFlow Single** pose detection:
+     ```bash
+     python3 src/main.py -m tensorflow_single
+     ```
+     
+   - To run with **TensorFlow Multi** pose detection:
+     ```bash
+     python3 src/main.py -m tensorflow_multi
      ```
 
 2. **Interact with the program**:

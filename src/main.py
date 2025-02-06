@@ -1,8 +1,8 @@
 import argparse
-from src.pose_estimation.mediapipe_estimator import MediaPipePoseDetector
-from src.pose_estimation.yolo_estimator import YoloPoseEstimator
-from src.pose_estimation.tensorflow_multi_estimator import TensorFlowMultiPoseEstimator
-from src.pose_estimation.tensorflow_single_estimator import TensorFlowSinglePoseEstimator
+from pose_estimation.mediapipe_estimator import MediaPipePoseDetector
+from pose_estimation.yolo_estimator import YoloPoseEstimator
+from pose_estimation.tensorflow_multi_estimator import TensorFlowMultiPoseEstimator
+from pose_estimation.tensorflow_single_estimator import TensorFlowSinglePoseEstimator
 
 
 def main():
