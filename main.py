@@ -1,5 +1,7 @@
 import argparse
 from mediapipe_pose import MediaPipePoseDetector
+from yolo_pose import YoloPoseEstimator
+
 
 def main():
     # Create an argument parser for selecting the method
@@ -17,8 +19,8 @@ def main():
         print("Starting MediaPipe...")
         detector = MediaPipePoseDetector()
     elif args.method == "yolo":
-        print("YOLO is not implemented yet!")
-        return
+        print("Starting YOLO...")
+        detector = YoloPoseEstimator()
     else:
         print("Unsupported method.")
         return
