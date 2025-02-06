@@ -1,10 +1,8 @@
-import string
-
 from ultralytics import YOLO
 import cv2
 
 class YoloPoseEstimator:
-    def __init__(self, yolo: string = 'yolo11n-pose.pt') -> None:
+    def __init__(self, yolo: str = 'yolo11n-pose.pt') -> None:
         """
         Initialize the YOLO11 Pose Estimator.
         """
