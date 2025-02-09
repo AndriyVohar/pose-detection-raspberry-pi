@@ -3,6 +3,7 @@ from pose_estimation.mediapipe_estimator import MediaPipePoseDetector
 from pose_estimation.yolo_estimator import YoloPoseEstimator
 from pose_estimation.tensorflow_multi_estimator import TensorFlowMultiPoseEstimator
 from pose_estimation.tensorflow_single_estimator import TensorFlowSinglePoseEstimator
+from pose_estimation.openpose_estimator import OpenPosePoseEstimator
 
 
 def main():
@@ -10,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(description="Select a pose detection method")
     parser.add_argument(
         "-m", "--method",
-        choices=["mediapipe", "yolo", "tensorflow_multi", "tensorflow_single"],
+        choices=["mediapipe", "yolo", "tensorflow_multi", "tensorflow_single", "openpose"],
         default="mediapipe",
         help="Select the method: 'mediapipe' or 'yolo'."
     )
@@ -29,6 +30,9 @@ def main():
     elif args.method == "tensorflow_single":
         print("Starting TensorFlow Single...")
         detector = TensorFlowSinglePoseEstimator()
+    elif args.method == "openpose":
+        print("Starting OpenPose Model...")
+        detector = OpenPosePoseEstimator()
     else:
         print("Unsupported method.")
         return
