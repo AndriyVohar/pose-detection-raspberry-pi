@@ -64,6 +64,11 @@ To run the pose detection project, follow these steps:
      ```bash
      python3 src/main.py -m tensorflow_multi
      ```
+     
+   - To run with **OpenPose** pose detection:
+     ```bash
+     python3 src/main.py -m openpose
+     ```
 
 2. **Interact with the program**:
 
@@ -74,7 +79,7 @@ That's it! You can switch between different pose detection models by changing th
 
 
 ## Todo
-- [ ] OpenPose: An open-source library for real-time multi-person keypoint detection.
+- [X] OpenPose: An open-source library for real-time multi-person keypoint detection.
 - [X] MediaPipe: A cross-platform framework for building multimodal applied machine learning pipelines, including pose estimation.
 - [X] YOLO (You Only Look Once): A real-time object detection system that can be adapted for pose estimation.
 - [X] TensorFlow: An open-source machine learning framework that includes models for pose estimation.
