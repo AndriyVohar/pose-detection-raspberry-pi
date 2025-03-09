@@ -83,11 +83,8 @@ That's it! You can switch between different pose detection models by changing th
 - [X] MediaPipe: A cross-platform framework for building multimodal applied machine learning pipelines, including pose estimation.
 - [X] YOLO (You Only Look Once): A real-time object detection system that can be adapted for pose estimation.
 - [X] TensorFlow: An open-source machine learning framework that includes models for pose estimation.
-- [ ] PyTorch: Another popular machine learning framework with various pose estimation models.
 - [ ] Detectron2: A Facebook AI Research library that provides state-of-the-art detection and segmentation algorithms.
 - [ ] AlphaPose: An accurate multi-person pose estimator.
-- [ ] HRNet: High-Resolution Network for accurate human pose estimation.
-- [ ] DeepLabCut: A toolbox for markerless pose estimation of animals.
 - [ ] PoseNet: A vision model that can estimate the pose of a person in real-time.
 
 ## Contributing

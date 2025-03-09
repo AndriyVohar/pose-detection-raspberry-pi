@@ -71,5 +71,5 @@ class OpenPosePoseEstimator:
 
 
 if __name__ == "__main__":
-    estimator = OpenCVPoseEstimator()
+    estimator = OpenPosePoseEstimator()
     estimator.run()

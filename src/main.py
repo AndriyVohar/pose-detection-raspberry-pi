@@ -11,7 +11,13 @@ def main():
     parser = argparse.ArgumentParser(description="Select a pose detection method")
     parser.add_argument(
         "-m", "--method",
-        choices=["mediapipe", "yolo", "tensorflow_multi", "tensorflow_single", "openpose"],
+        choices=[
+            "mediapipe",
+            "yolo",
+            "tensorflow_multi",
+            "tensorflow_single",
+            "openpose",
+        ],
         default="mediapipe",
         help="Select the method: 'mediapipe' or 'yolo'."
     )
