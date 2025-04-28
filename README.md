@@ -50,7 +50,7 @@ To run the pose detection project, follow these steps:
      python3 src/main.py -m mediapipe
      ```
      
-   - To run with **YOLO** pose detection (if implemented):
+   - To run with **YOLO** pose detection:
      ```bash
      python3 src/main.py -m yolo
      ```
@@ -70,6 +70,16 @@ To run the pose detection project, follow these steps:
      python3 src/main.py -m openpose
      ```
 
+   - To run with **Detectron2** pose detection:
+     ```bash
+     python3 src/main.py -m detectron2
+     ```
+     
+   - To run with **BlazePose** pose detection:
+     ```bash
+     python3 src/main.py -m blazepose
+     ```
+
 2. **Interact with the program**:
 
    - The application will open a webcam feed and begin performing pose detection using the selected method.
@@ -78,12 +88,14 @@ To run the pose detection project, follow these steps:
 That's it! You can switch between different pose detection models by changing the `-m` argument when running the program.
 
 
-## Todo
-- [X] OpenPose: An open-source library for real-time multi-person keypoint detection.
-- [X] MediaPipe: A cross-platform framework for building multimodal applied machine learning pipelines, including pose estimation.
-- [X] YOLO (You Only Look Once): A real-time object detection system that can be adapted for pose estimation.
-- [X] TensorFlow: An open-source machine learning framework that includes models for pose estimation.
-- [ ] Detectron2: A Facebook AI Research library that provides state-of-the-art detection and segmentation algorithms.
+## Implemented Models
+The following pose detection models have been successfully implemented:
+- [x] OpenPose: An open-source library for real-time multi-person keypoint detection.
+- [x] MediaPipe: A cross-platform framework for building multimodal applied machine learning pipelines, including pose estimation.
+- [x] YOLO (You Only Look Once): A real-time object detection system that can be adapted for pose estimation.
+- [x] TensorFlow: An open-source machine learning framework that includes models for pose estimation.
+- [x] Detectron2: A Facebook AI Research library that provides state-of-the-art detection and segmentation algorithms.
+- [X] BlazePose: A lightweight and efficient pose detection model designed for mobile devices.
 - [ ] AlphaPose: An accurate multi-person pose estimator.
 - [ ] PoseNet: A vision model that can estimate the pose of a person in real-time.
 

@@ -5,7 +5,7 @@ from pose_estimation.tensorflow_multi_estimator import TensorFlowMultiPoseEstima
 from pose_estimation.tensorflow_single_estimator import TensorFlowSinglePoseEstimator
 from pose_estimation.openpose_estimator import OpenPosePoseEstimator
 from pose_estimation.blazepose_estimator import BlazePoseEstimator
-
+from pose_estimation.detectron2_estimator import Detectron2PoseEstimator
 
 def main():
     # Create an argument parser for selecting the method
@@ -18,7 +18,8 @@ def main():
             "tensorflow_multi",
             "tensorflow_single",
             "openpose",
-            "blazepose",  # Add this line
+            "blazepose",
+            "detectron2",
         ],
         default="mediapipe",
         help="Select the method: 'mediapipe', 'yolo', etc."
@@ -44,6 +45,9 @@ def main():
     elif args.method == "blazepose":
         print("Starting BlazePose...")
         detector = BlazePoseEstimator()
+    elif args.method == "detectron2":
+        print("Starting Detectron2...")
+        detector = Detectron2PoseEstimator()
     else:
         print("Unsupported method.")
         return
