@@ -4,6 +4,7 @@ from pose_estimation.yolo_estimator import YoloPoseEstimator
 from pose_estimation.tensorflow_multi_estimator import TensorFlowMultiPoseEstimator
 from pose_estimation.tensorflow_single_estimator import TensorFlowSinglePoseEstimator
 from pose_estimation.openpose_estimator import OpenPosePoseEstimator
+from pose_estimation.blazepose_estimator import BlazePoseEstimator
 
 
 def main():
@@ -17,9 +18,10 @@ def main():
             "tensorflow_multi",
             "tensorflow_single",
             "openpose",
+            "blazepose",  # Add this line
         ],
         default="mediapipe",
-        help="Select the method: 'mediapipe' or 'yolo'."
+        help="Select the method: 'mediapipe', 'yolo', etc."
     )
     args = parser.parse_args()
 
@@ -39,6 +41,9 @@ def main():
     elif args.method == "openpose":
         print("Starting OpenPose Model...")
         detector = OpenPosePoseEstimator()
+    elif args.method == "blazepose":
+        print("Starting BlazePose...")
+        detector = BlazePoseEstimator()
     else:
         print("Unsupported method.")
         return
