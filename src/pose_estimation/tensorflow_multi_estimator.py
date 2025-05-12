@@ -2,48 +2,51 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import cv2
 import numpy as np
+from base_estimator import BasePoseEstimator
 
-class TensorFlowMultiPoseEstimator:
+class TensorFlowMultiPoseEstimator(BasePoseEstimator):
     """
     A class to perform pose estimation using TensorFlow and TensorFlow Hub.
     """
 
-    def __init__(self):
+    def __init__(self, camera_id=0, width=640, height=480, confidence_threshold=0.1):
         """
-        Initialize the pose estimator by loading the model and setting up the video capture.
+        Initialize the pose estimator by loading the model.
+        
+        Args:
+            camera_id: Camera device ID
+            width: Camera frame width
+            height: Camera frame height
+            confidence_threshold: Minimum confidence score for keypoints
         """
+        super().__init__(camera_id, width, height)
         self.model = hub.load('https://tfhub.dev/google/movenet/multipose/lightning/1')
         self.movenet = self.model.signatures['serving_default']
-        self.cap = cv2.VideoCapture(0)
-
-    def run(self):
+        self.confidence_threshold = confidence_threshold
+        
+    def _process_frame_impl(self, frame):
         """
-        Run the pose estimation on video frames captured from the webcam.
+        Process a frame with TensorFlow Multi-Pose estimation.
+        
+        Args:
+            frame: Input frame to process
+            
+        Returns:
+            The processed frame with pose visualization
         """
-        while self.cap.isOpened():
-            ret, frame = self.cap.read()
-            if not ret:
-                break
+        # Resize image to a smaller size for faster processing
+        img = frame.copy()
+        img = tf.image.resize_with_pad(tf.expand_dims(img, axis=0), 256, 256)
+        input_img = tf.cast(img, dtype=tf.int32)
 
-            # Resize image to a smaller size for faster processing
-            img = frame.copy()
-            img = tf.image.resize_with_pad(tf.expand_dims(img, axis=0), 256, 256)
-            input_img = tf.cast(img, dtype=tf.int32)
+        # Detection section
+        results = self.movenet(input_img)
+        keypoints_with_scores = results['output_0'].numpy()[:, :, :51].reshape((6, 17, 3))
 
-            # Detection section
-            results = self.movenet(input_img)
-            keypoints_with_scores = results['output_0'].numpy()[:, :, :51].reshape((6, 17, 3))
-
-            # Render keypoints
-            self.loop_through_people(frame, keypoints_with_scores, EDGES, 0.1)
-
-            cv2.imshow('Movenet Multipose', frame)
-
-            if cv2.waitKey(10) & 0xFF == ord('q'):
-                break
-
-        self.cap.release()
-        cv2.destroyAllWindows()
+        # Render keypoints
+        self.loop_through_people(frame, keypoints_with_scores, EDGES, self.confidence_threshold)
+        
+        return frame
 
     def loop_through_people(self, frame, keypoints_with_scores, edges, confidence_threshold):
         """
