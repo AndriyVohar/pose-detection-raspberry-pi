@@ -1,3 +1,8 @@
 .idea
 .venv
 models
+
+# Benchmark results
+benchmark_results/*.csv
+benchmark_results/*.avi
+benchmark_results/*.mp4
