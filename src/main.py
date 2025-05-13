@@ -1,5 +1,5 @@
 import argparse
-from pose_estimation.mediapipe_estimator import MediaPipePoseDetector
+from pose_estimation.mediapipe_estimator import MediaPipePoseEstimator
 from pose_estimation.yolo_estimator import YoloPoseEstimator
 from pose_estimation.tensorflow_multi_estimator import TensorFlowMultiPoseEstimator
 from pose_estimation.tensorflow_single_estimator import TensorFlowSinglePoseEstimator
@@ -29,7 +29,7 @@ def main():
     # Initialize the selected pose detection method
     if args.method == "mediapipe":
         print("Starting MediaPipe...")
-        detector = MediaPipePoseDetector()
+        detector = MediaPipePoseEstimator()
     elif args.method == "yolo":
         print("Starting YOLO...")
         detector = YoloPoseEstimator()
