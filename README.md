@@ -140,3 +140,17 @@ Key metrics include:
 ## Contributing
 
 This project does not accept contributions.
+
+## Support Ukraine
+
+### 🇺🇦 StandWithUkraine
+
+Ukraine is currently defending itself against russian aggression. Thousands of civilians have been killed, millions displaced, and critical infrastructure has been destroyed. Despite these challenges, Ukraine continues to fight for its freedom and sovereignty.
+
+### How You Can Help:
+
+- **Donate**: Consider supporting humanitarian organizations like the [Red Cross Ukraine Crisis Appeal](https://redcross.org.ua/en/donate/), [United24](https://u24.gov.ua/), or [Come Back Alive](https://savelife.in.ua/en/donate-en/)
+- **Stay Informed**: Follow reliable news sources about the situation
+- **Support Ukrainian Businesses and Developers**: Like this open-source project
+
+Glory to Ukraine! Слава Україні! 🇺🇦

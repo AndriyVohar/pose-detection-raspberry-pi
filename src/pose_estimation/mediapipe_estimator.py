@@ -25,9 +25,6 @@ class MediaPipePoseEstimator(BasePoseEstimator):
             min_tracking_confidence=0.5
         )  # Pose detector
         self.mp_drawing = mp.solutions.drawing_utils  # For drawing landmarks
-        self.prev_time = 0
-        self.target_fps = 30  # Limit to 30 FPS
-        self.frame_interval = 1.0 / self.target_fps
 
     def _process_frame_impl(self, frame):
         """
@@ -39,11 +36,6 @@ class MediaPipePoseEstimator(BasePoseEstimator):
         Returns:
             The processed frame with pose visualization
         """
-        # Limit frame rate
-        current_time = time.time()
-        if current_time - self.prev_time < self.frame_interval:
-            return frame
-        self.prev_time = current_time
 
         # Convert the frame to RGB as required by MediaPipe
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
